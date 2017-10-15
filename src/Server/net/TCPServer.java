@@ -11,7 +11,9 @@ import javax.net.ServerSocketFactory;
 
 
 import Server.controller.Controller;
+import Server.shape.*;
 import Server.util.AES;
+import Server.util.JsonMessageUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -24,7 +26,24 @@ public class TCPServer implements Runnable {
 	private volatile boolean running = false;
 	private Map<String, ClientSocket> accpetpedClientSocketMap = new HashMap<>();
 	private List<ClientSocket> waitingClientSocketlist = new ArrayList<>();
-	private Controller controller;
+
+    public Map<String, ClientSocket> getAccpetpedClientSocketMap() {
+        return accpetpedClientSocketMap;
+    }
+
+    public void setAccpetpedClientSocketMap(Map<String, ClientSocket> accpetpedClientSocketMap) {
+        this.accpetpedClientSocketMap = accpetpedClientSocketMap;
+    }
+
+    public List<ClientSocket> getWaitingClientSocketlist() {
+        return waitingClientSocketlist;
+    }
+
+    public void setWaitingClientSocketlist(List<ClientSocket> waitingClientSocketlist) {
+        this.waitingClientSocketlist = waitingClientSocketlist;
+    }
+
+    private Controller controller;
 
 	private int userNum = 1;
 
@@ -219,15 +238,20 @@ public class TCPServer implements Runnable {
 		
 		private void messageHandler(String message) {
 			String msg = AES.Decrypt(message);
-			java.lang.reflect.Type mapType = new TypeToken<Map<String, String>>(){}.getType();
+			java.lang.reflect.Type mapType = new TypeToken<Map<String, Object>>(){}.getType();
 			Gson gson = new Gson();
-			Map<String,String> data = gson.fromJson(msg, mapType);
+			Map<String,Object> data = gson.fromJson(msg, mapType);
 			System.out.println("received msg from client: "+socket.getInetAddress()+" port:"+socket.getPort() +" msg: " + data);
-			switch (data.get("cmd")) {
-			case "heartbeat":
-				String heartbeatData = "{\"cmd\":\"heartbeat\",\"content\":\"ack\"}";
-				sendData(heartbeatData);
-				break;
+			switch (data.get("cmd").toString()) {
+                case "heartbeat":
+                    String heartbeatData = "{\"cmd\":\"heartbeat\",\"content\":\"ack\"}";
+                    sendData(heartbeatData);
+                    break;
+                case "addShape":
+                    String classType = data.get("classType").toString();
+                    String objectData = data.get("object").toString();
+                    Shape shape = JsonMessageUtil.GenerateShapeFromMessage(classType, objectData);
+                    controller.addShape(shape, msg);
 			default:
 				break;
 			}

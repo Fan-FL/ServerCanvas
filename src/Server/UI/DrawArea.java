@@ -2,12 +2,14 @@ package Server.UI;
 
 import Server.shape.*;
 import Server.shape.Shape;
+import Server.util.JsonMessageUtil;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /*
     The DrawArea class is about the painting action of the mouse
@@ -20,6 +22,8 @@ public class DrawArea extends JPanel {
 
     private WhiteBoardWindow whiteboard = null;
     public java.util.List<Shape> shapeList = new java.util.ArrayList<Shape>(); // drawing graphs
+
+    private ReentrantReadWriteLock reentrantReadWriteLock = new ReentrantReadWriteLock();
 
     private ShapeType currentShapeType = ShapeType.PENCIL; // Set default pen as Pencil
     private Shape currentShape = null;
@@ -60,20 +64,24 @@ public class DrawArea extends JPanel {
     }
 
     public void clearCanvas() {
+        reentrantReadWriteLock.writeLock().lock();
         this.shapeList.clear();
         this.currentShape = null;
         this.lastShape = null;
+        reentrantReadWriteLock.writeLock().unlock();
     }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
+        reentrantReadWriteLock.readLock().lock();
         if (!shapeList.isEmpty()) {
             for (Shape shape : shapeList) {
                 draw(g2d, shape);
             }
         }
+        reentrantReadWriteLock.readLock().unlock();
         if(currentShape!=null){
             draw(g2d, currentShape);
         }
@@ -86,19 +94,19 @@ public class DrawArea extends JPanel {
         i.draw(g2d);
     }
 
-    public void addShape(Shape shape){
-        this.shapeList.add(shape);
-        currentShape = null;
+    public void addShape(Shape shape, String from){
+        reentrantReadWriteLock.writeLock().lock();
+        if(from.equals("local")){
+            currentShape = null;
+            String addShapeMsg = JsonMessageUtil.assembleAddShapeobjectData(shape);
+            this.shapeList.add(shape);
+            this.whiteboard.getController().sendToClients(addShapeMsg);
+        }else if(from.equals("client")){
+            this.shapeList.add(shape);
+        }
+        reentrantReadWriteLock.writeLock().unlock();
         repaint();
         System.out.println(shapeList.size());
-    }
-
-    public void undo() {
-        if(!shapeList.isEmpty()){
-            shapeList.remove(shapeList.size()-1);
-            currentShape = null;
-            repaint();
-        }
     }
 
     private void createNewShape() {
@@ -111,39 +119,51 @@ public class DrawArea extends JPanel {
         switch (currentShapeType) {
             case PENCIL:
                 shape = new Pencil();
+                shape.classType = "Pencil";
                 break;
             case LINE:
                 shape = new Line();
+                shape.classType = "Line";
                 break;
             case RECT:
                 shape = new Rect();
+                shape.classType = "Rect";
                 break;
             case FILLRECT:
                 shape = new FillRect();
+                shape.classType = "FillRect";
                 break;
             case OVAL:
                 shape = new Oval();
+                shape.classType = "Oval";
                 break;
             case FILLOVAL:
                 shape = new FillOval();
+                shape.classType = "FillOval";
                 break;
             case CIRCLE:
                 shape = new Circle();
+                shape.classType = "Circle";
                 break;
             case FILLCIRCLE:
                 shape = new FillCircle();
+                shape.classType = "FillCircle";
                 break;
             case ROUNDRECT:
                 shape = new RoundRect();
+                shape.classType = "RoundRect";
                 break;
             case FILLROUNDRECT:
                 shape = new FillRoundRect();
+                shape.classType = "FillRoundRect";
                 break;
             case RUBBER:
                 shape = new Rubber();
+                shape.classType = "Rubber";
                 break;
             case WORD:
                 shape = new Word();
+                shape.classType = "Word";
                 break;
         }
         if (shape != null) {
@@ -316,7 +336,7 @@ public class DrawArea extends JPanel {
                     currentShapeType = ShapeType.WORD;
                     break;
             }
-            addShape(currentShape);
+            addShape(currentShape, "local");
         }
     }
 
@@ -388,5 +408,4 @@ public class DrawArea extends JPanel {
                     + me.getY() + "]");
         }
     }
-
 }

@@ -3,7 +3,9 @@ package Server.controller;
 import Server.UI.StartServerWindow;
 import Server.UI.WhiteBoardWindow;
 import Server.net.TCPServer;
-
+import Server.shape.Shape;
+import com.google.gson.Gson;
+import Server.shape.*;
 
 public class Controller {
     private TCPServer tcpServer;
@@ -38,7 +40,7 @@ public class Controller {
     }
 
     public void serverDisconnect(){
-
+        // server socket closed
     }
 
     public void newClientConnected(TCPServer.ClientSocket clientSocket) {
@@ -57,4 +59,14 @@ public class Controller {
 
     }
 
+    public void addShape(Shape shape, String msg) {
+        this.whiteBoardWindow.getDrawarea().addShape(shape, "client");
+        this.sendToClients(msg);
+    }
+
+    public void sendToClients(String msg) {
+        for (TCPServer.ClientSocket socket : this.tcpServer.getAccpetpedClientSocketMap().values()) {
+            socket.sendData(msg);
+        }
+    }
 }

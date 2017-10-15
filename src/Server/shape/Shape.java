@@ -19,6 +19,7 @@ public abstract class Shape implements Serializable {
 	public String s2; // Character style two
 	public List<Integer> dotsX;
     public List<Integer> dotxY;
+	public String classType;
 
 	// The drawing function
 	public abstract void draw(Graphics2D g2d) ;

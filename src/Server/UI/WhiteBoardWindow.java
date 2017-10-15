@@ -17,9 +17,18 @@ import java.text.SimpleDateFormat;
 public class WhiteBoardWindow extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = -2551980583852173918L;
-	Controller controller;
+	private Controller controller;
 	private JToolBar buttonpanel;
 	// define the button panel
+
+	public Controller getController() {
+		return controller;
+	}
+
+	public void setController(Controller controller) {
+		this.controller = controller;
+	}
+
 	private JMenuBar bar;
 	private JMenu file, color, stroke;
 	// four main menu of the button panel
@@ -29,6 +38,15 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 	// The icon objects of the button panel
 	private JLabel startbar;
 	private DrawArea drawarea;
+
+	public DrawArea getDrawarea() {
+		return drawarea;
+	}
+
+	public void setDrawarea(DrawArea drawarea) {
+		this.drawarea = drawarea;
+	}
+
 	private FileHandler fileclass;
 
 	private JPanel userinfo;
@@ -44,7 +62,7 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 	String[] fontName;
 	// Define the name of the icons in the button panel
 	private String names[] = {"pen","line", "rect", "frect", "oval", "foval", "circle", "fcircle",
-			"roundrect", "froundrect", "rubber", "color", "stroke", "word", "undo" };
+			"roundrect", "froundrect", "rubber", "color", "stroke", "word"};
 	private Icon icons[];
 
 	// Show instruction when the mouse moves above the button
@@ -53,7 +71,7 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 			"draw a hollow oval", "draw a solid oval", "draw a hollow circle",
 			"draw a solid circle", "draw a rounded corner rectangle",
 			"draw a solid rounded corner rectangle", "eraser", "color",
-			"brush size", "text input", "undo process" };
+			"brush size", "text input"};
 	JButton button[]; // define button group in toolbar
 	private JCheckBox bold, italic;
 
@@ -382,8 +400,6 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 					"hints", JOptionPane.INFORMATION_MESSAGE);
 			drawarea.setCurrentShapeType(DrawArea.ShapeType.WORD);
 			drawarea.repaint();
-		} else if (e.getSource() == button[14]){
-			drawarea.undo();
 		} else if (e.getActionCommand().equals("clear")) {
 			sendArea.setText("");
 		} else if (e.getActionCommand().equals("send")) {
