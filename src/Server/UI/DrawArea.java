@@ -23,7 +23,7 @@ public class DrawArea extends JPanel {
     private WhiteBoardWindow whiteboard = null;
     public java.util.List<Shape> shapeList = new java.util.ArrayList<Shape>(); // drawing graphs
 
-    private ReentrantReadWriteLock reentrantReadWriteLock = new ReentrantReadWriteLock();
+    public ReentrantReadWriteLock reentrantReadWriteLock = new ReentrantReadWriteLock();
 
     private ShapeType currentShapeType = ShapeType.PENCIL; // Set default pen as Pencil
     private Shape currentShape = null;

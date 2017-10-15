@@ -4,6 +4,7 @@ import Server.UI.StartServerWindow;
 import Server.UI.WhiteBoardWindow;
 import Server.net.TCPServer;
 import Server.shape.Shape;
+import Server.util.JsonMessageUtil;
 import com.google.gson.Gson;
 import Server.shape.*;
 
@@ -68,5 +69,14 @@ public class Controller {
         for (TCPServer.ClientSocket socket : this.tcpServer.getAccpetpedClientSocketMap().values()) {
             socket.sendData(msg);
         }
+    }
+
+    public void sendCurrentShapes(TCPServer.ClientSocket clientSocket) {
+        this.whiteBoardWindow.getDrawarea().reentrantReadWriteLock.readLock().lock();
+        for (Shape shape : this.whiteBoardWindow.getDrawarea().shapeList) {
+            String addShapeMsg = JsonMessageUtil.assembleAddShapeobjectData(shape);
+            clientSocket.sendData(addShapeMsg);
+        }
+        this.whiteBoardWindow.getDrawarea().reentrantReadWriteLock.readLock().unlock();
     }
 }

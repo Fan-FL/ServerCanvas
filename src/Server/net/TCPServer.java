@@ -247,6 +247,9 @@ public class TCPServer implements Runnable {
                     String heartbeatData = "{\"cmd\":\"heartbeat\",\"content\":\"ack\"}";
                     sendData(heartbeatData);
                     break;
+                case "checkACK":
+                    controller.sendCurrentShapes(this);
+                    break;
                 case "addShape":
                     String classType = data.get("classType").toString();
                     String objectData = data.get("object").toString();
