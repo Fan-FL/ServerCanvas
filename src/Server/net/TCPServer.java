@@ -1,6 +1,3 @@
-/*
- * Fan Li 844359
- */
 package Server.net;
 
 import java.io.DataInputStream;
@@ -17,8 +14,6 @@ import Server.controller.Controller;
 import Server.util.AES;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
-import javafx.application.Platform;
 
 //client connection handler thread
 public class TCPServer implements Runnable {
