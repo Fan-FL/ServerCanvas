@@ -4,7 +4,7 @@
     <list default="true" id="e783bc6d-fa5b-4e0b-ae99-7ec146a9d56a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/UI/StartServerWindow.java" afterPath="$PROJECT_DIR$/src/Server/UI/StartServerWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/UI/WhiteBoardWindow.java" afterPath="$PROJECT_DIR$/src/Server/UI/WhiteBoardWindow.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/controller/Controller.java" afterPath="$PROJECT_DIR$/src/Server/controller/Controller.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/net/TCPServer.java" afterPath="$PROJECT_DIR$/src/Server/net/TCPServer.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -24,8 +24,8 @@
       <file leaf-file-name="StartServerWindow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Server/UI/StartServerWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="65" column="72" lean-forward="true" selection-start-line="65" selection-start-column="19" selection-end-line="65" selection-end-column="72" />
+            <state relative-caret-position="-53">
+              <caret line="80" column="45" lean-forward="false" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2389#2633#0" expanded="true" />
@@ -35,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WhiteBoardWindow.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WhiteBoardWindow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Server/UI/WhiteBoardWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="237" column="23" lean-forward="true" selection-start-line="237" selection-start-column="23" selection-end-line="237" selection-end-column="23" />
+            <state relative-caret-position="-374">
+              <caret line="66" column="45" lean-forward="true" selection-start-line="66" selection-start-column="45" selection-end-line="66" selection-end-column="45" />
               <folding>
                 <element signature="e#8243#8412#0" expanded="true" />
                 <element signature="e#8411#8412#0" expanded="true" />
@@ -48,11 +48,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="FileHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Server/file/FileHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="17" column="22" lean-forward="true" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Server/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="497">
-              <caret line="35" column="79" lean-forward="false" selection-start-line="35" selection-start-column="79" selection-end-line="35" selection-end-column="79" />
+            <state relative-caret-position="299">
+              <caret line="48" column="27" lean-forward="false" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -60,11 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TCPServer.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TCPServer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Server/net/TCPServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="89" column="19" lean-forward="true" selection-start-line="89" selection-start-column="19" selection-end-line="89" selection-end-column="19" />
+            <state relative-caret-position="232">
+              <caret line="145" column="37" lean-forward="false" selection-start-line="145" selection-start-column="37" selection-end-line="145" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -96,6 +106,8 @@
       <find>system</find>
       <find>System.exit</find>
       <find>set</find>
+      <find>controller</find>
+      <find>approveClient</find>
     </findStrings>
     <replaceStrings>
       <replace>controller</replace>
@@ -126,10 +138,10 @@
         <option value="$PROJECT_DIR$/src/Server/controller/ConnectionController.java" />
         <option value="$PROJECT_DIR$/src/Server/UI/StartserverWindow.java" />
         <option value="$PROJECT_DIR$/src/Server/Server.java" />
-        <option value="$PROJECT_DIR$/src/Server/controller/Controller.java" />
-        <option value="$PROJECT_DIR$/src/Server/net/TCPServer.java" />
-        <option value="$PROJECT_DIR$/src/Server/UI/StartServerWindow.java" />
         <option value="$PROJECT_DIR$/src/Server/UI/WhiteBoardWindow.java" />
+        <option value="$PROJECT_DIR$/src/Server/controller/Controller.java" />
+        <option value="$PROJECT_DIR$/src/Server/UI/StartServerWindow.java" />
+        <option value="$PROJECT_DIR$/src/Server/net/TCPServer.java" />
       </list>
     </option>
   </component>
@@ -202,6 +214,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ServerCanvas" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ServerCanvas" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -705,12 +739,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1508025668639</updated>
-      <workItem from="1508025671914" duration="10393000" />
+      <workItem from="1508025671914" duration="13888000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10393000" />
+    <option name="totallyTimeSpent" value="13888000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1932" height="1053" extended-state="0" />
@@ -861,26 +895,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Server/controller/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="35" column="79" lean-forward="false" selection-start-line="35" selection-start-column="79" selection-end-line="35" selection-end-column="79" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Server/net/TCPServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="89" column="19" lean-forward="true" selection-start-line="89" selection-start-column="19" selection-end-line="89" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://D:/Program Files/Java/jdk1.8.0_121/src.zip!/javax/swing/JFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-110">
@@ -889,10 +903,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Server/file/FileHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="17" column="22" lean-forward="true" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Server/UI/WhiteBoardWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-374">
+          <caret line="66" column="45" lean-forward="true" selection-start-line="66" selection-start-column="45" selection-end-line="66" selection-end-column="45" />
+          <folding>
+            <element signature="e#8243#8412#0" expanded="true" />
+            <element signature="e#8411#8412#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Server/UI/StartServerWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="65" column="72" lean-forward="true" selection-start-line="65" selection-start-column="19" selection-end-line="65" selection-end-column="72" />
+        <state relative-caret-position="-53">
+          <caret line="80" column="45" lean-forward="false" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2389#2633#0" expanded="true" />
@@ -901,13 +934,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Server/UI/WhiteBoardWindow.java">
+    <entry file="file://$PROJECT_DIR$/src/Server/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="237" column="23" lean-forward="true" selection-start-line="237" selection-start-column="23" selection-end-line="237" selection-end-column="23" />
+        <state relative-caret-position="299">
+          <caret line="48" column="27" lean-forward="false" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
           <folding>
-            <element signature="e#8243#8412#0" expanded="true" />
-            <element signature="e#8411#8412#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Server/net/TCPServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="145" column="37" lean-forward="false" selection-start-line="145" selection-start-column="37" selection-end-line="145" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

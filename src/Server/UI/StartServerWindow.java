@@ -77,6 +77,9 @@ public class StartServerWindow implements ActionListener{
     
     public void actionPerformed(ActionEvent e) {  
         if(e.getActionCommand().equals("start")){
+            //test
+            portNumberTextField.setText("4444");
+
             this.controller = new Controller();
             this.controller.setStartserverWindow(this);
             int serverPort;

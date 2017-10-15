@@ -46,7 +46,11 @@ public class Controller {
     }
 
     public void approveNewClient(TCPServer.ClientSocket clientSocket){
-        tcpServer.addApprovedClient(clientSocket);
+        tcpServer.approveClient(clientSocket);
+    }
+
+    public void rejectNewClient(TCPServer.ClientSocket clientSocket){
+        tcpServer.rejectClient(clientSocket);
     }
 
     public void addNewClient(String username, String IP, String port){

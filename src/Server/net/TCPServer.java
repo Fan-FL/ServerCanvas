@@ -52,11 +52,19 @@ public class TCPServer implements Runnable {
 		this.serverPort = serverPort;
 	}
 
-	public void addApprovedClient(ClientSocket clientSocket){
+	public void approveClient(ClientSocket clientSocket){
 		accpetpedClientSocketMap.put(clientSocket.getUsername(), clientSocket);
 		waitingClientSocketlist.remove(clientSocket);
 		this.controller.addNewClient(clientSocket.getUsername(), clientSocket.getClientIP(), clientSocket.getClientPort());
+        String approveData = "{\"cmd\":\"check\",\"content\":\"approve\"}";
+        clientSocket.sendData(approveData);
 	}
+
+    public void rejectClient(ClientSocket clientSocket) {
+        String approveData = "{\"cmd\":\"check\",\"content\":\"reject\"}";
+        clientSocket.sendData(approveData);
+        clientSocket.shutdownSocket();
+    }
 
 
 	public int getServerPort() {
@@ -113,8 +121,7 @@ public class TCPServer implements Runnable {
 		}
 	}
 
-
-	//client requests handler thread
+    //client requests handler thread
 	public class ClientSocket implements Runnable {
 		private Socket socket;
 		private String clientIP;
@@ -141,6 +148,7 @@ public class TCPServer implements Runnable {
 				this.username = getNextUsername();
 				waitingClientSocketlist.add(this);
 				controller.newClientConnected(this);
+                approveClient(this);
 			}catch (IOException e){
 				System.out.println("ClientSocket IO Exception:"+e.getMessage());
 				shutdownSocket();
@@ -231,21 +239,14 @@ public class TCPServer implements Runnable {
 		}
 		
 		public void sendData(String msg){
-//			try {
-//				output.writeUTF(AES.Encrypt(msg));
-//				output.flush();
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//				shutdownSocket();
-//				Platform.runLater(new Runnable() {
-//				    @Override
-//				    public void run() {
-//						mainController.promptArea.setText(mainController.promptArea.getText() + "Sending data exception: " +e.getMessage() + System.getProperty("line.separator"));
-//
-//				    }
-//				});
-//				dic.writeFile(ServerMain.argsBean.getDictionaryPath());
-//			}
+			try {
+				output.writeUTF(AES.Encrypt(msg));
+				output.flush();
+			} catch (IOException e) {
+				e.printStackTrace();
+				shutdownSocket();
+                System.out.println("Sending data exception: " +e.getMessage());
+			}
 		}
 	}
 
