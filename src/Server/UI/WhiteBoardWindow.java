@@ -238,7 +238,16 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 		setBounds(0, 0, dim.width, dim.height - 40);
 		setVisible(true);
 		validate();
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		addWindowListener(new WindowAdapter(){
+			public void windowClosing(WindowEvent e) {
+				if(controller != null){
+					controller.getTcpServer().stop();
+				}
+				System.exit(0);
+			}
+
+		});
 	}
 
 	// The characters shown in the start bar

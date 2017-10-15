@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.*;
 
@@ -61,9 +63,17 @@ public class StartServerWindow implements ActionListener{
         startFrame.add(icon, BorderLayout.NORTH);
         startFrame.add(text, BorderLayout.CENTER);
         startFrame.setResizable(false);
-        startFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-    }   
+        startFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        startFrame.addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e) {
+                if(controller != null){
+                    controller.getTcpServer().stop();
+                }
+                System.exit(0);
+            }
+
+        });
+    }
     
     public void actionPerformed(ActionEvent e) {  
         if(e.getActionCommand().equals("start")){
@@ -79,7 +89,9 @@ public class StartServerWindow implements ActionListener{
 
         }  
         if(e.getActionCommand().equals("exit")){
-            this.controller.getTcpServer().stop();
+            if(this.controller != null){
+                this.controller.getTcpServer().stop();
+            }
             System.exit(0);
         }  
     }
@@ -88,5 +100,6 @@ public class StartServerWindow implements ActionListener{
         startFrame.dispose();
         portNumberTextField = null;
     }
+
 }
 

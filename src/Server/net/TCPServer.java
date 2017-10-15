@@ -108,6 +108,7 @@ public class TCPServer implements Runnable {
 				this.controller.serverDisconnect();
 				this.waitingClientSocketlist.clear();
 				this.accpetpedClientSocketMap.clear();
+				System.out.println("server stopped");
 			}
 		}
 	}
