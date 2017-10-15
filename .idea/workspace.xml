@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e783bc6d-fa5b-4e0b-ae99-7ec146a9d56a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/UI/WhiteBoardWindow.java" afterPath="$PROJECT_DIR$/src/Server/UI/WhiteBoardWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/controller/Controller.java" afterPath="$PROJECT_DIR$/src/Server/controller/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/net/TCPServer.java" afterPath="$PROJECT_DIR$/src/Server/net/TCPServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server/util/AES.java" afterPath="$PROJECT_DIR$/src/Server/util/AES.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,11 +18,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="WhiteBoardWindow.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="WhiteBoardWindow.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Server/UI/WhiteBoardWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="244" column="17" lean-forward="true" selection-start-line="244" selection-start-column="17" selection-end-line="244" selection-end-column="17" />
+            <state relative-caret-position="-422">
+              <caret line="90" column="43" lean-forward="false" selection-start-line="90" selection-start-column="43" selection-end-line="90" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#585#586#0" expanded="true" />
@@ -41,10 +37,10 @@
                 <element signature="e#1288#1289#0" expanded="true" />
                 <element signature="e#1341#1342#0" expanded="true" />
                 <element signature="e#1383#1384#0" expanded="true" />
-                <element signature="e#7642#7811#0" expanded="true" />
-                <element signature="e#7810#7811#0" expanded="true" />
-                <marker date="1508071590217" expanded="false" signature="7894:7899" ph=" { " />
-                <marker date="1508071590217" expanded="false" signature="7919:7922" ph=" }" />
+                <element signature="e#7636#7805#0" expanded="true" />
+                <element signature="e#7804#7805#0" expanded="true" />
+                <marker date="1508073208456" expanded="false" signature="7888:7893" ph=" { " />
+                <marker date="1508073208456" expanded="false" signature="7913:7916" ph=" }" />
               </folding>
             </state>
           </provider>
@@ -113,7 +109,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AES.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AES.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Server/util/AES.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="44">
@@ -249,10 +245,10 @@
         <option value="$PROJECT_DIR$/src/Server/UI/UserTableModel.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/Server/net/TCPServer.java" />
-        <option value="$PROJECT_DIR$/src/Server/UI/WhiteBoardWindow.java" />
         <option value="$PROJECT_DIR$/src/Server/controller/Controller.java" />
         <option value="$PROJECT_DIR$/src/Server/UI/UserTable.java" />
         <option value="$PROJECT_DIR$/src/Server/util/AES.java" />
+        <option value="$PROJECT_DIR$/src/Server/UI/WhiteBoardWindow.java" />
       </list>
     </option>
   </component>
@@ -891,16 +887,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1508025668639</updated>
-      <workItem from="1508025671914" duration="41281000" />
+      <workItem from="1508025671914" duration="41946000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41281000" />
+    <option name="totallyTimeSpent" value="41946000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1932" height="1053" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -917,7 +913,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1160,16 +1156,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Server/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://D:/Program Files/Java/jdk1.8.0_121/src.zip!/javax/swing/JComponent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="626">
@@ -1292,32 +1278,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Server/UI/WhiteBoardWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="244" column="17" lean-forward="true" selection-start-line="244" selection-start-column="17" selection-end-line="244" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#585#586#0" expanded="true" />
-            <element signature="e#609#610#0" expanded="true" />
-            <element signature="e#662#663#0" expanded="true" />
-            <element signature="e#697#698#0" expanded="true" />
-            <element signature="e#1053#1054#0" expanded="true" />
-            <element signature="e#1075#1076#0" expanded="true" />
-            <element signature="e#1122#1123#0" expanded="true" />
-            <element signature="e#1153#1154#0" expanded="true" />
-            <element signature="e#1256#1257#0" expanded="true" />
-            <element signature="e#1288#1289#0" expanded="true" />
-            <element signature="e#1341#1342#0" expanded="true" />
-            <element signature="e#1383#1384#0" expanded="true" />
-            <element signature="e#7642#7811#0" expanded="true" />
-            <element signature="e#7810#7811#0" expanded="true" />
-            <marker date="1508071590217" expanded="false" signature="7894:7899" ph=" { " />
-            <marker date="1508071590217" expanded="false" signature="7919:7922" ph=" }" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Server/net/TCPServer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
@@ -1364,6 +1324,42 @@
           <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Server/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Server/UI/WhiteBoardWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-422">
+          <caret line="90" column="43" lean-forward="false" selection-start-line="90" selection-start-column="43" selection-end-line="90" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#585#586#0" expanded="true" />
+            <element signature="e#609#610#0" expanded="true" />
+            <element signature="e#662#663#0" expanded="true" />
+            <element signature="e#697#698#0" expanded="true" />
+            <element signature="e#1053#1054#0" expanded="true" />
+            <element signature="e#1075#1076#0" expanded="true" />
+            <element signature="e#1122#1123#0" expanded="true" />
+            <element signature="e#1153#1154#0" expanded="true" />
+            <element signature="e#1256#1257#0" expanded="true" />
+            <element signature="e#1288#1289#0" expanded="true" />
+            <element signature="e#1341#1342#0" expanded="true" />
+            <element signature="e#1383#1384#0" expanded="true" />
+            <element signature="e#7636#7805#0" expanded="true" />
+            <element signature="e#7804#7805#0" expanded="true" />
+            <marker date="1508073208456" expanded="false" signature="7888:7893" ph=" { " />
+            <marker date="1508073208456" expanded="false" signature="7913:7916" ph=" }" />
           </folding>
         </state>
       </provider>
