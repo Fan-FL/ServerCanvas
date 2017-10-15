@@ -5,8 +5,6 @@ import Server.UI.WhiteBoardWindow;
 import Server.net.TCPServer;
 import Server.shape.Shape;
 import Server.util.JsonMessageUtil;
-import com.google.gson.Gson;
-import Server.shape.*;
 
 public class Controller {
     private TCPServer tcpServer;
@@ -60,9 +58,8 @@ public class Controller {
 
     }
 
-    public void addShape(Shape shape, String msg) {
-        this.whiteBoardWindow.getDrawarea().addShape(shape, "client");
-        this.sendToClients(msg);
+    public void addShape(Shape shape) {
+        this.whiteBoardWindow.getDrawarea().addShape(shape, "external");
     }
 
     public void sendToClients(String msg) {
@@ -79,4 +76,5 @@ public class Controller {
         }
         this.whiteBoardWindow.getDrawarea().reentrantReadWriteLock.readLock().unlock();
     }
+
 }

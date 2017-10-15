@@ -2,6 +2,7 @@ package Server.file;
 
 import Server.UI.DrawArea;
 import Server.UI.WhiteBoardWindow;
+import Server.shape.*;
 import Server.shape.Shape;
 
 import javax.swing.*;
@@ -60,7 +61,32 @@ public class FileHandler {
                 countNumber = input.readInt();
                 for (int i = 0; i < countNumber; i++) {
                     inputRecord = (Shape) input.readObject();
-                    drawarea.shapeList.add(inputRecord);
+                    if (inputRecord instanceof Pencil){
+                        inputRecord.classType="Pencil";
+                    }else if (inputRecord instanceof Line){
+                        inputRecord.classType="Line";
+                    }else if (inputRecord instanceof Rect){
+                        inputRecord.classType="Rect";
+                    }else if (inputRecord instanceof FillRect){
+                        inputRecord.classType="FillRect";
+                    }else if (inputRecord instanceof Oval){
+                        inputRecord.classType="Oval";
+                    }else if (inputRecord instanceof FillOval){
+                        inputRecord.classType="FillOval";
+                    }else if (inputRecord instanceof Circle){
+                        inputRecord.classType="Circle";
+                    }else if (inputRecord instanceof FillCircle){
+                        inputRecord.classType="FillCircle";
+                    }else if (inputRecord instanceof RoundRect){
+                        inputRecord.classType="RoundRect";
+                    }else if (inputRecord instanceof FillRoundRect){
+                        inputRecord.classType="FillRoundRect";
+                    }else if (inputRecord instanceof Rubber){
+                        inputRecord.classType="Rubber";
+                    }else if (inputRecord instanceof Word){
+                        inputRecord.classType="Word";
+                    }
+                    drawarea.addShape(inputRecord, "external");
                 }
                 input.close();
                 drawarea.repaint();

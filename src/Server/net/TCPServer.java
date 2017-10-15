@@ -254,7 +254,7 @@ public class TCPServer implements Runnable {
                     String classType = data.get("classType").toString();
                     String objectData = data.get("object").toString();
                     Shape shape = JsonMessageUtil.GenerateShapeFromMessage(classType, objectData);
-                    controller.addShape(shape, msg);
+                    controller.addShape(shape);
 			default:
 				break;
 			}

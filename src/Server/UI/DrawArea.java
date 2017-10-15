@@ -68,6 +68,7 @@ public class DrawArea extends JPanel {
         this.shapeList.clear();
         this.currentShape = null;
         this.lastShape = null;
+        this.whiteboard.getController().sendToClients("{\"cmd\":\"clearCanvas\"}");
         reentrantReadWriteLock.writeLock().unlock();
     }
 
@@ -101,8 +102,10 @@ public class DrawArea extends JPanel {
             String addShapeMsg = JsonMessageUtil.assembleAddShapeobjectData(shape);
             this.shapeList.add(shape);
             this.whiteboard.getController().sendToClients(addShapeMsg);
-        }else if(from.equals("client")){
+        }else if(from.equals("external")){
             this.shapeList.add(shape);
+            String addShapeMsg = JsonMessageUtil.assembleAddShapeobjectData(shape);
+            this.whiteboard.getController().sendToClients(addShapeMsg);
         }
         reentrantReadWriteLock.writeLock().unlock();
         repaint();

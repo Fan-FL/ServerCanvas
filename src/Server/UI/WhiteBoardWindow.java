@@ -1,6 +1,5 @@
 package Server.UI;
 
-import Server.Server;
 import Server.controller.Controller;
 import Server.file.FileHandler;
 
