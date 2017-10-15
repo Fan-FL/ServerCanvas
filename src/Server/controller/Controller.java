@@ -1,6 +1,7 @@
 package Server.controller;
 
 import Server.UI.StartServerWindow;
+import Server.UI.UserTable;
 import Server.UI.WhiteBoardWindow;
 import Server.net.TCPServer;
 import Server.shape.Shape;
@@ -48,6 +49,13 @@ public class Controller {
 
     public void approveNewClient(TCPServer.ClientSocket clientSocket){
         tcpServer.approveClient(clientSocket);
+        this.whiteBoardWindow.getUserTable().addUser(clientSocket.getUsername());
+        sendToClients("{\"cmd\":\"addUser\",\"content\":\"" + clientSocket.getUsername()+ "\"}");
+    }
+
+    public void kickUser(String username) {
+        tcpServer.getAccpetpedClientSocketMap().get(username).sendData("{\"cmd\":\"kick\"}");
+        tcpServer.getAccpetpedClientSocketMap().get(username).shutdownSocket();
     }
 
     public void rejectNewClient(TCPServer.ClientSocket clientSocket){
@@ -75,6 +83,10 @@ public class Controller {
             clientSocket.sendData(addShapeMsg);
         }
         this.whiteBoardWindow.getDrawarea().reentrantReadWriteLock.readLock().unlock();
+    }
+
+    public void sendChat(String username, String content){
+
     }
 
 }

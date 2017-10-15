@@ -162,7 +162,8 @@ public class TCPServer implements Runnable {
 				this.username = getNextUsername();
 				waitingClientSocketlist.add(this);
 				controller.newClientConnected(this);
-                approveClient(this);
+                controller.approveNewClient(this);
+                sendData("{\"cmd\":\"username\",\"content\":\"" + this.username +"\"}");
 			}catch (IOException e){
 				System.out.println("ClientSocket IO Exception:"+e.getMessage());
 				shutdownSocket();
