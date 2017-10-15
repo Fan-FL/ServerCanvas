@@ -63,7 +63,7 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 	Toolkit tool = getToolkit();
 	Dimension dim = tool.getScreenSize();// Get the size of current screen
 
-	public WhiteBoardWindow(String string, Controller controller) {
+	public WhiteBoardWindow(String string, final Controller controller) {
 		// TODO constructor of main interface
 		super(string);
 		this.controller = controller;
