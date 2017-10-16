@@ -9,6 +9,8 @@ import Server.util.JsonMessageUtil;
 
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 public class Controller {
     private TCPServer tcpServer;
     private StartServerWindow startserverWindow;
@@ -47,7 +49,14 @@ public class Controller {
 
     public void newClientConnected(TCPServer.ClientSocket clientSocket) {
         //approve or not
-    	
+    	//JOptionPane.showMessageDialog(null, "A new client wants to conect, agree or not?", "notice", JOptionPane.WARNING_MESSAGE);
+    	int reaction = JOptionPane.showConfirmDialog(null, "A new client wants to conect, agree or not?", "choose one", JOptionPane.YES_NO_OPTION);
+    	if (reaction == JOptionPane.YES_OPTION){
+    		tcpServer.approveClient(clientSocket);
+    	}
+    	else{
+    		tcpServer.rejectClient(clientSocket);
+    	}
     }
 
     public void approveNewClient(TCPServer.ClientSocket clientSocket){
