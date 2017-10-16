@@ -241,6 +241,7 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 		addWindowListener(new WindowAdapter(){
 			public void windowClosing(WindowEvent e) {
 				if(controller != null){
+                    controller.sendToClients("{\"cmd\":\"serverClosed\"}");
 					controller.getTcpServer().stop();
 				}
 				System.exit(0);
@@ -331,15 +332,17 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 		return sendButtonAreaPanel;
 	}
 
-	public String usermessage(String username, String ip_address) {
-		String userName = username;
-		String ipAddress = ip_address;
+	public void addChatMessage(String content) {
+		recvArea.append(content);
+	}
+
+	public String generateChatMessage() {
+		String userName = this.userTable.getMyUsername();
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String time = df.format(new Date());
-		String content = sendArea.getText();
-		String userMessage = userName + ("(") + ipAddress + (")") + ("  ")
-				+ time + ("\n") + content;
-		return userMessage;
+		String message = userName + "   (" + time + ("):") + System.getProperty("line.separator")
+				+ sendArea.getText() + System.getProperty("line.separator") + System.getProperty("line.separator");
+		return message;
 	}
 
 	/*
@@ -366,6 +369,7 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 			fileclass.saveFile();
 		} else if (e.getSource() == exit) {
 			// exit
+            controller.sendToClients("{\"cmd\":\"serverClosed\"}");
 			this.controller.getTcpServer().stop();
 			System.exit(0);
 		} else if (e.getSource() == button[11]) {
@@ -384,7 +388,7 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 		} else if (e.getActionCommand().equals("clear")) {
 			sendArea.setText("");
 		} else if (e.getActionCommand().equals("send")) {
-			recvArea.append(usermessage("Admin", "120.0.0.1") + "\n");
+			this.controller.addChatMessage(generateChatMessage());
 			sendArea.setText("");
 		}
 

@@ -93,10 +93,6 @@ public class Controller {
         this.whiteBoardWindow.getDrawarea().reentrantReadWriteLock.readLock().unlock();
     }
 
-    public void sendChat(String username, String content){
-
-    }
-
     public void sendCurrentUsers(TCPServer.ClientSocket clientSocket) {
         List<String> usernamesList = this.whiteBoardWindow.getUserTable().getAllUsers();
         for (String username:usernamesList) {
@@ -110,7 +106,8 @@ public class Controller {
         }
     }
 
-    public void disconnectUser(){
-
+    public void addChatMessage(String text) {
+        this.whiteBoardWindow.addChatMessage(text);
+        sendToClients("{\"cmd\":\"newChat\",\"content\":\"" + text + "\"}");
     }
 }

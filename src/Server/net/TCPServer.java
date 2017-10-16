@@ -269,6 +269,11 @@ public class TCPServer implements Runnable {
                     String objectData = data.get("object").toString();
                     Shape shape = JsonMessageUtil.GenerateShapeFromMessage(classType, objectData);
                     controller.addShape(shape);
+                    break;
+                case "addChat":
+                    String text = data.get("content").toString();
+                    controller.addChatMessage(text);
+                    break;
 			default:
 				break;
 			}
@@ -276,7 +281,8 @@ public class TCPServer implements Runnable {
 		
 		public void sendData(String msg){
 			try {
-				output.writeUTF(AES.Encrypt(msg));
+                System.out.println(msg);
+                output.writeUTF(AES.Encrypt(msg));
 				output.flush();
 			} catch (IOException e) {
 				e.printStackTrace();
