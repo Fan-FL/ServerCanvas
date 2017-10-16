@@ -223,9 +223,9 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
         user_table.setLayout(new BorderLayout());
 //        user_table.setBackground(Color.white);
         user_table.setBorder(BorderFactory.createLineBorder(Color.blue));
-        user_table.add(userTable, BorderLayout.CENTER);
-        userinfo.add(user_table, BorderLayout.CENTER);
-        userinfo.add(kickButton, BorderLayout.SOUTH);
+        user_table.add(userTable, BorderLayout.NORTH);
+        userinfo.add(user_table, BorderLayout.NORTH);
+        userinfo.add(kickButton, BorderLayout.CENTER);
         userinfo.setBackground(new Color(245,245,245));
         
 
