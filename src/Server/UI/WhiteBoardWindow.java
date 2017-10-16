@@ -102,8 +102,7 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 		bar.add(color);
 		bar.add(stroke);
         bar.setOpaque(true);
-        bar.setBackground(Color.cyan);
-
+        bar.setBackground(new Color(245,245,245));
 		setJMenuBar(bar);
 
 		// Define short cut keys for the buttons
@@ -209,6 +208,7 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 		buttonpanel.add(bold);
 		buttonpanel.add(italic);
 		buttonpanel.add(stytles);
+		buttonpanel.setBackground(new Color(245,245,245));
 
 		// Initialization for the start bar
 		startbar = new JLabel("White Board");
@@ -221,11 +221,13 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 
         JPanel user_table = new JPanel();
         user_table.setLayout(new BorderLayout());
-        user_table.setBackground(Color.white);
+//        user_table.setBackground(Color.white);
         user_table.setBorder(BorderFactory.createLineBorder(Color.blue));
         user_table.add(userTable, BorderLayout.CENTER);
         userinfo.add(user_table, BorderLayout.CENTER);
         userinfo.add(kickButton, BorderLayout.SOUTH);
+        userinfo.setBackground(new Color(245,245,245));
+        
 
 		chat = new JPanel();
 		chat.setLayout(new BorderLayout(0, 10));
@@ -267,28 +269,12 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 		startbar.setText(s);
 	}
 
-	public JPanel userInfo(String userName, String ipAddress){
-		JPanel userinfo = new JPanel();
-		userinfo.setLayout(new BorderLayout());
-		JLabel username = new JLabel(" " + userName);
-		username.setBackground(Color.white);
-		JButton operation = new JButton("DELETE");
-		operation.addActionListener(this);
-		operation.setActionCommand("delete");
-		username.setToolTipText(ipAddress);
-		userinfo.add(username, BorderLayout.WEST);
-		userinfo.add(operation, BorderLayout.EAST);
-		userinfo.setBorder(BorderFactory.createLineBorder(Color.blue));
-		//userinfo.setPreferredSize(new Dimension(200,10));
-		return userinfo;
-		
-	}
 	public JPanel recvWindow() {
 		recvArea = new JTextArea(400, (dim.height - 130) * 2 / 3 - 50);
 
-		chatRoom = new JLabel("The Chat Room");
+		chatRoom = new JLabel("  The Chat Room");
 		chatRoom.setOpaque(true);
-		chatRoom.setBackground(Color.cyan);
+		chatRoom.setBackground(new Color(245,245,245));
 		chatRoomPanel = new JPanel();
 		chatRoomPanel.setLayout(new GridLayout());
 		chatRoomPanel.add(chatRoom);

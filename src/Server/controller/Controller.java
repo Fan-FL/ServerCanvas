@@ -47,6 +47,7 @@ public class Controller {
 
     public void newClientConnected(TCPServer.ClientSocket clientSocket) {
         //approve or not
+    	
     }
 
     public void approveNewClient(TCPServer.ClientSocket clientSocket){
