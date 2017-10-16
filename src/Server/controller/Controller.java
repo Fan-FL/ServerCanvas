@@ -1,14 +1,14 @@
 package Server.controller;
 
 import Server.UI.StartServerWindow;
-import Server.UI.UserTable;
 import Server.UI.WhiteBoardWindow;
 import Server.net.TCPServer;
 import Server.shape.Shape;
 import Server.util.JsonMessageUtil;
 
-import javax.swing.*;
 import java.util.List;
+
+import javax.swing.JOptionPane;
 
 public class Controller {
     private TCPServer tcpServer;
@@ -47,7 +47,7 @@ public class Controller {
     }
 
     public void newClientConnected(TCPServer.ClientSocket clientSocket) {
-        int res= JOptionPane.showConfirmDialog(null, "Do you want new user to join?", "New user connected.", JOptionPane.YES_NO_OPTION);
+        int res= JOptionPane.showConfirmDialog(null, "A new client wants to conect, agree or not?", "New user connected.", JOptionPane.YES_NO_OPTION);
         if(res==JOptionPane.YES_OPTION){
             this.approveNewClient(clientSocket);
         }else{
