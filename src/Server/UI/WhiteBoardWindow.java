@@ -102,7 +102,7 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 		bar.add(color);
 		bar.add(stroke);
         bar.setOpaque(true);
-        bar.setBackground(Color.cyan);
+        bar.setBackground(new Color(245,245,245));
 
 		setJMenuBar(bar);
 
@@ -212,6 +212,7 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 
 		// Initialization for the start bar
 		startbar = new JLabel("White Board");
+		startbar.setBackground(new Color(245,245,245));
 
         userTable = new UserTable(this);
         JPanel kickButton = userTable.kick();
@@ -222,10 +223,11 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
         JPanel user_table = new JPanel();
         user_table.setLayout(new BorderLayout());
         user_table.setBackground(Color.white);
-        user_table.setBorder(BorderFactory.createLineBorder(Color.blue));
+        user_table.setBorder(BorderFactory.createLineBorder(Color.black));
         user_table.add(userTable, BorderLayout.CENTER);
-        userinfo.add(user_table, BorderLayout.CENTER);
-        userinfo.add(kickButton, BorderLayout.SOUTH);
+        user_table.setPreferredSize(new Dimension(250, dim.height - 260));
+        userinfo.add(user_table, BorderLayout.NORTH);
+        userinfo.add(kickButton, BorderLayout.CENTER);
 
 		chat = new JPanel();
 		chat.setLayout(new BorderLayout(0, 10));
@@ -278,7 +280,7 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 		username.setToolTipText(ipAddress);
 		userinfo.add(username, BorderLayout.WEST);
 		userinfo.add(operation, BorderLayout.EAST);
-		userinfo.setBorder(BorderFactory.createLineBorder(Color.blue));
+		userinfo.setBorder(BorderFactory.createLineBorder(Color.black));
 		//userinfo.setPreferredSize(new Dimension(200,10));
 		return userinfo;
 		
@@ -288,7 +290,7 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 
 		chatRoom = new JLabel("The Chat Room");
 		chatRoom.setOpaque(true);
-		chatRoom.setBackground(Color.cyan);
+		chatRoom.setBackground(new Color(245,245,245));
 		chatRoomPanel = new JPanel();
 		chatRoomPanel.setLayout(new GridLayout());
 		chatRoomPanel.add(chatRoom);
@@ -306,7 +308,7 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 		// recviveAreaPanel.setSize(400,(dim.height-130)*2/3 - 50);
 		recviveAreaPanel.setPreferredSize(new Dimension(400,
 				(dim.height - 130) * 2 / 3 - 50));
-		recviveAreaPanel.setBorder(BorderFactory.createLineBorder(Color.blue));
+		recviveAreaPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 		return recviveAreaPanel;
 	}
 
@@ -322,7 +324,7 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 
 		sendAreaPanel.add(sendScroll , BorderLayout.CENTER);
 		sendAreaPanel.setSize(400, (dim.height - 130) / 3 - 50);
-		sendAreaPanel.setBorder(BorderFactory.createLineBorder(Color.blue));
+		sendAreaPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 		return sendAreaPanel;
 	}
 
