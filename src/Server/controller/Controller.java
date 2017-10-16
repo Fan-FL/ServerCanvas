@@ -7,6 +7,7 @@ import Server.net.TCPServer;
 import Server.shape.Shape;
 import Server.util.JsonMessageUtil;
 
+import javax.swing.*;
 import java.util.List;
 
 public class Controller {
@@ -46,7 +47,12 @@ public class Controller {
     }
 
     public void newClientConnected(TCPServer.ClientSocket clientSocket) {
-        //approve or not
+        int res= JOptionPane.showConfirmDialog(null, "Do you want new user to join?", "New user connected.", JOptionPane.YES_NO_OPTION);
+        if(res==JOptionPane.YES_OPTION){
+            this.approveNewClient(clientSocket);
+        }else{
+            this.rejectNewClient(clientSocket);
+        }
     }
 
     public void approveNewClient(TCPServer.ClientSocket clientSocket){

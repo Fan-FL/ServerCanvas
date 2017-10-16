@@ -67,8 +67,10 @@ public class TCPServer implements Runnable {
 	}
 
 	public void approveClient(ClientSocket clientSocket){
-        String approveData = "{\"cmd\":\"check\",\"content\":\"approve\"}";
-        clientSocket.sendData(approveData);
+	    if(clientSocket.isConnected()){
+            clientSocket.sendData("{\"cmd\":\"check\",\"content\":\"approve\"}");
+            clientSocket.sendData("{\"cmd\":\"username\",\"content\":\"" + clientSocket.username +"\"}");
+        }
 	}
 
 	public void getApproveClientACKFromClient(ClientSocket clientSocket){
@@ -114,7 +116,9 @@ public class TCPServer implements Runnable {
 				Socket socket = serverSocket.accept();
 				System.out.println("received connection from IP: " + socket.getInetAddress() + "port: " + socket.getPort());
 				//start client requests handler thread
-				new Thread(new ClientSocket(socket)).start();
+                ClientSocket clientSocket = new ClientSocket(socket);
+				new Thread(clientSocket).start();
+                controller.newClientConnected(clientSocket);
 			}
 		}catch (IOException e){
 			stop();
@@ -151,7 +155,12 @@ public class TCPServer implements Runnable {
 		private String username;
 
 		boolean flag = true;
-		long lastReceiveTime;
+
+        public boolean isConnected() {
+            return flag;
+        }
+
+        long lastReceiveTime;
 		// Connection will be closed if no message received from client every 11 seconds (plus 1 seconds for delay)
 		private long receiveTimeDelay = 11000;
 		private long checkDelay = 100;
@@ -169,9 +178,6 @@ public class TCPServer implements Runnable {
 				this.clientPort = String.valueOf(this.socket.getPort());
 				this.username = getNextUsername();
 				waitingClientSocketlist.add(this);
-				controller.newClientConnected(this);
-                controller.approveNewClient(this);
-                sendData("{\"cmd\":\"username\",\"content\":\"" + this.username +"\"}");
 			}catch (IOException e){
 				System.out.println("ClientSocket IO Exception:"+e.getMessage());
 				shutdownSocket();
