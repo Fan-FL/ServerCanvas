@@ -214,6 +214,18 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 		startbar = new JLabel("White Board");
 
         userTable = new UserTable(this);
+        JPanel kickButton = userTable.kick();
+        
+        JPanel userinfo = new JPanel();
+        userinfo.setLayout(new BorderLayout());
+
+        JPanel user_table = new JPanel();
+        user_table.setLayout(new BorderLayout());
+        user_table.setBackground(Color.white);
+        user_table.setBorder(BorderFactory.createLineBorder(Color.blue));
+        user_table.add(userTable, BorderLayout.CENTER);
+        userinfo.add(user_table, BorderLayout.CENTER);
+        userinfo.add(kickButton, BorderLayout.SOUTH);
 
 		chat = new JPanel();
 		chat.setLayout(new BorderLayout(0, 10));
@@ -231,7 +243,7 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 		con.add(buttonpanel, BorderLayout.NORTH);
 		con.add(drawarea, BorderLayout.CENTER);
 		con.add(startbar, BorderLayout.SOUTH);
-		con.add(userTable, BorderLayout.WEST);
+		con.add(userinfo, BorderLayout.WEST);
 		con.add(chat, BorderLayout.EAST);
 
 		setBounds(0, 0, dim.width, dim.height - 40);
