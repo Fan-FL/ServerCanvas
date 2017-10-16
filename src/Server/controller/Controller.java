@@ -42,10 +42,6 @@ public class Controller {
         this.startserverWindow.finish();
     }
 
-    public void serverDisconnect(){
-        // server socket closed
-    }
-
     public void newClientConnected(TCPServer.ClientSocket clientSocket) {
         int res= JOptionPane.showConfirmDialog(null, "A new client wants to conect, agree or not?", "New user connected.", JOptionPane.YES_NO_OPTION);
         if(res==JOptionPane.YES_OPTION){

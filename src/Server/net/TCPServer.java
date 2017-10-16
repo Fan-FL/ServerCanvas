@@ -139,7 +139,6 @@ public class TCPServer implements Runnable {
 				e.printStackTrace();
 			} finally{
 				serverSocket = null;
-				this.controller.serverDisconnect();
 				this.waitingClientSocketlist.clear();
 				this.accpetpedClientSocketMap.clear();
 				System.out.println("server stopped");
