@@ -3,6 +3,9 @@ package Server.UI;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -47,23 +50,47 @@ public class UserTable extends JPanel{
         final JButton kickButton = new JButton("kick");
         kickButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                deleteUser();
+                kickUser();
             }
         });
         panel.add(kickButton);
     }
 
-    public void addUser(String username){
+    public synchronized void addUser(String username){
         String []rowValues = {username};
         tableModel.addRow(rowValues);
     }
 
-    public void deleteUser(){
+    private synchronized void kickUser(){
         int selectedRow = table.getSelectedRow();
-        if(selectedRow!=-1)
-        {
+        if(selectedRow!=-1){
             this.whiteboard.getController().kickUser((String)table.getValueAt(selectedRow,0));
-            tableModel.removeRow(selectedRow);
+        }
+    }
+
+    public synchronized boolean deleteUser(String username){
+        int rowCount = tableModel.getRowCount();
+        if(rowCount != -1){
+            for (int i=0; i<rowCount; i++){
+                if(table.getValueAt(i,0).equals(username)){
+                    tableModel.removeRow(i);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public synchronized List<String> getAllUsers(){
+        int rowCount = tableModel.getRowCount();
+        if(rowCount != -1){
+            List<String> usernamesList = new ArrayList<>();
+            for (int i=0; i<rowCount; i++){
+                usernamesList.add((String)table.getValueAt(i,0));
+            }
+            return usernamesList;
+        }else{
+            return null;
         }
     }
 

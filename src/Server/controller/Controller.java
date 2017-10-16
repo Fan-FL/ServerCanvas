@@ -7,6 +7,8 @@ import Server.net.TCPServer;
 import Server.shape.Shape;
 import Server.util.JsonMessageUtil;
 
+import java.util.List;
+
 public class Controller {
     private TCPServer tcpServer;
     private StartServerWindow startserverWindow;
@@ -49,21 +51,27 @@ public class Controller {
 
     public void approveNewClient(TCPServer.ClientSocket clientSocket){
         tcpServer.approveClient(clientSocket);
-        this.whiteBoardWindow.getUserTable().addUser(clientSocket.getUsername());
-        sendToClients("{\"cmd\":\"addUser\",\"content\":\"" + clientSocket.getUsername()+ "\"}");
+    }
+
+    public void getApprovedClientACKFromClient(TCPServer.ClientSocket clientSocket){
+        this.addUserToUserTable(clientSocket.getUsername());
+        sendToClients("{\"cmd\":\"addUser\",\"content\":\"" + clientSocket.getUsername() + "\"}");
+    }
+
+    public void addUserToUserTable(String username){
+        this.whiteBoardWindow.getUserTable().addUser(username);
     }
 
     public void kickUser(String username) {
-        tcpServer.getAccpetpedClientSocketMap().get(username).sendData("{\"cmd\":\"kick\"}");
-        tcpServer.getAccpetpedClientSocketMap().get(username).shutdownSocket();
+        TCPServer.ClientSocket clientSocket = tcpServer.getAccpetpedClientSocketMap().get(username);
+        if(clientSocket!= null){
+            clientSocket.sendData("{\"cmd\":\"kick\"}");
+            clientSocket.shutdownSocket();
+        }
     }
 
     public void rejectNewClient(TCPServer.ClientSocket clientSocket){
         tcpServer.rejectClient(clientSocket);
-    }
-
-    public void addNewClient(String username, String IP, String port){
-
     }
 
     public void addShape(Shape shape) {
@@ -89,4 +97,20 @@ public class Controller {
 
     }
 
+    public void sendCurrentUsers(TCPServer.ClientSocket clientSocket) {
+        List<String> usernamesList = this.whiteBoardWindow.getUserTable().getAllUsers();
+        for (String username:usernamesList) {
+            clientSocket.sendData("{\"cmd\":\"addUser\",\"content\":\""+username+"\"}");
+        }
+    }
+
+    public void deleteUser(String username) {
+        if(this.whiteBoardWindow.getUserTable().deleteUser(username)){
+            sendToClients("{\"cmd\":\"deleteUser\",\"content\":\"" + username + "\"}");
+        }
+    }
+
+    public void disconnectUser(){
+
+    }
 }

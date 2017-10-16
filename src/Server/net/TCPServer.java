@@ -67,11 +67,18 @@ public class TCPServer implements Runnable {
 	}
 
 	public void approveClient(ClientSocket clientSocket){
-		accpetpedClientSocketMap.put(clientSocket.getUsername(), clientSocket);
-		waitingClientSocketlist.remove(clientSocket);
-		this.controller.addNewClient(clientSocket.getUsername(), clientSocket.getClientIP(), clientSocket.getClientPort());
         String approveData = "{\"cmd\":\"check\",\"content\":\"approve\"}";
         clientSocket.sendData(approveData);
+	}
+
+	public void getApproveClientACKFromClient(ClientSocket clientSocket){
+		accpetpedClientSocketMap.put(clientSocket.getUsername(), clientSocket);
+		waitingClientSocketlist.remove(clientSocket);
+
+		controller.sendCurrentShapes(clientSocket);
+		controller.sendCurrentUsers(clientSocket);
+
+		controller.getApprovedClientACKFromClient(clientSocket);
 	}
 
     public void rejectClient(ClientSocket clientSocket) {
@@ -101,6 +108,7 @@ public class TCPServer implements Runnable {
 			this.serverSocket = serverSocket;
 			this.running = true;
 			this.controller.showWhiteBoardWindow();
+			this.controller.addUserToUserTable("Admin");
 			System.out.println("Waiting for client connection..");
 			while (this.running) {
 				Socket socket = serverSocket.accept();
@@ -232,6 +240,7 @@ public class TCPServer implements Runnable {
 					output = null;
 					waitingClientSocketlist.remove(this);
 					accpetpedClientSocketMap.remove(this.getUsername());
+					controller.deleteUser(this.getUsername());
 				}
 			}
 
@@ -248,8 +257,12 @@ public class TCPServer implements Runnable {
                     String heartbeatData = "{\"cmd\":\"heartbeat\",\"content\":\"ack\"}";
                     sendData(heartbeatData);
                     break;
-                case "checkACK":
-                    controller.sendCurrentShapes(this);
+                case "approveACK":
+					getApproveClientACKFromClient(this);
+                    break;
+                case "disconnect":
+					shutdownSocket();
+                	controller.deleteUser(this.getUsername());
                     break;
                 case "addShape":
                     String classType = data.get("classType").toString();
