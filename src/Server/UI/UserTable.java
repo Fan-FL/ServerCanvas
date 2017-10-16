@@ -48,12 +48,13 @@ public class UserTable extends JPanel{
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane,BorderLayout.CENTER);
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        table.setPreferredSize(new Dimension(250,dim.height - 270));
+//        table.setPreferredSize(new Dimension(250,dim.height - 270));
+//        table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        //table.setPreferredSize(new Dimension(250,dim.height - 270));
+        table.setPreferredScrollableViewportSize(new Dimension(250,dim.height - 270));
 
         scrollPane.setViewportView(table);
-        scrollPane.setBounds(0, 0, 250, dim.height - 270);
-//        final JPanel panel = new JPanel();
-//        add(panel,BorderLayout.CENTER);
+        add(scrollPane,BorderLayout.CENTER);
 
     }
 /*    
