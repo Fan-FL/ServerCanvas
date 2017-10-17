@@ -216,7 +216,8 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 
         userTable = new UserTable(this);
         JPanel kickButton = userTable.kick();
-        
+        JLabel my_info = new JLabel("  You are: Admin"); 
+        my_info.setForeground(Color.black);
         JPanel userinfo = new JPanel();
         userinfo.setLayout(new BorderLayout());
 
@@ -226,8 +227,9 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
         user_table.setBorder(BorderFactory.createLineBorder(Color.black));
         user_table.add(userTable, BorderLayout.CENTER);
         user_table.setPreferredSize(new Dimension(250, dim.height - 260));
-        userinfo.add(user_table, BorderLayout.NORTH);
-        userinfo.add(kickButton, BorderLayout.CENTER);
+        userinfo.add(my_info, BorderLayout.NORTH);
+        userinfo.add(user_table, BorderLayout.CENTER);
+        userinfo.add(kickButton, BorderLayout.SOUTH);
 
 		chat = new JPanel();
 		chat.setLayout(new BorderLayout(0, 10));
