@@ -31,10 +31,10 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 	}
 
 	private JMenuBar bar;
-	private JMenu file, color, stroke;
+	private JMenu file, stroke;
 	// four main menu of the button panel
 	private JMenuItem newfile, openfile, savefile, exit;
-	private JMenuItem colorchoice, strokeitem;
+	private JMenuItem strokeitem;
 	private Icon nf, sf, of, ex;
 	// The icon objects of the button panel
 	private JLabel startbar;
@@ -97,12 +97,10 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 		this.controller = controller;
 		// initial menu
 		file = new JMenu("file");
-		color = new JMenu("color");
 		stroke = new JMenu("brush");
 		bar = new JMenuBar();// initial menu
 
 		bar.add(file);
-		bar.add(color);
 		bar.add(stroke);
         bar.setOpaque(true);
         bar.setBackground(new Color(245,245,245));
@@ -111,7 +109,6 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 
 		// Define short cut keys for the buttons
 		file.setMnemonic('F');
-		color.setMnemonic('C');
 		stroke.setMnemonic('S');
 
 		// File menu initialization
@@ -152,13 +149,6 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 		openfile.addActionListener(this);
 		savefile.addActionListener(this);
 		exit.addActionListener(this);
-
-		// Initialization of the color palate
-		colorchoice = new JMenuItem("color palete");
-		colorchoice.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C,
-				InputEvent.CTRL_MASK));
-		colorchoice.addActionListener(this);
-		color.add(colorchoice);
 
 		// Initialization for stroke menu
 		strokeitem = new JMenuItem("set brush");
