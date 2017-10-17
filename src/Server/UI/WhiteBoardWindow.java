@@ -86,7 +86,7 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 	private JCheckBox bold, italic;
 
 	private JComboBox stytles;
-	private String my_ip;
+//	private String my_ip;
 
 	Toolkit tool = getToolkit();
 	Dimension dim = tool.getScreenSize();// Get the size of current screen
@@ -216,15 +216,20 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 		// Initialization for the start bar
 		startbar = new JLabel("White Board");
 		startbar.setBackground(new Color(245,245,245));
+		
+		/*
 		try {
 			my_ip = InetAddress.getLocalHost().getHostAddress();
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
-
+		
+*/
+		
+		StartServerWindow startServerWindow = new StartServerWindow();
         userTable = new UserTable(this);
         JPanel kickButton = userTable.kick();
-        JLabel my_info = new JLabel("      You are: Admin" +"(" + my_ip + ")"); 
+        JLabel my_info = new JLabel("      You are: Admin" +"(" + startServerWindow.my_ip + ")"); 
         my_info.setForeground(Color.black);
         JPanel userinfo = new JPanel();
         userinfo.setLayout(new BorderLayout());

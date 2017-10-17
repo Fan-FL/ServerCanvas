@@ -20,16 +20,14 @@ public class StartServerWindow implements ActionListener {
 	private JTextField portNumberTextField;
 	private JTextField ipAddressField;
 	private Controller controller;
-	private String my_ip = null;
+	public static String my_ip = my_IPAddress();
+	
+	//setMy_ip(InetAddress.getLocalHost().getHostAddress());
 
 	public void showStartServerWindow() {
 		int width = Toolkit.getDefaultToolkit().getScreenSize().width;
 		int height = Toolkit.getDefaultToolkit().getScreenSize().height;
-		try {
-			my_ip = InetAddress.getLocalHost().getHostAddress();
-		} catch (UnknownHostException e) {
-			e.printStackTrace();
-		}
+
 
 		int windowWidth = 512;
 		int windowHeight = 395;
@@ -41,7 +39,7 @@ public class StartServerWindow implements ActionListener {
 		JLabel port = new JLabel("   Your port number:");
 		portNumberTextField = new JTextField(15);
 		ipAddressField = new JTextField(15);
-		ipAddressField.setText(my_ip);
+		ipAddressField.setText(my_IPAddress());
 		ipAddressField.setEnabled(false);
 		JButton start = new JButton(" Start ");
 		JButton exit = new JButton("     Exit    ");
@@ -92,6 +90,17 @@ public class StartServerWindow implements ActionListener {
 
 		});
 	}
+
+	public static String my_IPAddress(){
+		String my_Ip = null;
+		try {
+			my_Ip = (InetAddress.getLocalHost().getHostAddress());
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
+		return my_Ip;
+	}
+
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("start")) {
