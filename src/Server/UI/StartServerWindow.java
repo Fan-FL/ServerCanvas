@@ -104,18 +104,18 @@ public class StartServerWindow implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("start")) {
-			// test
-			portNumberTextField.setText("4444");
 
-			this.controller = new Controller();
-			this.controller.setStartserverWindow(this);
 			int serverPort;
 			try {
 				serverPort = Integer.parseInt(portNumberTextField.getText());
 			} catch (NumberFormatException exception) {
 				return;
 			}
-			controller.startServer(serverPort);
+			if(serverPort!=0){
+				this.controller = new Controller();
+				this.controller.setStartserverWindow(this);
+				controller.startServer(serverPort);
+			}
 
 		}
 		if (e.getActionCommand().equals("exit")) {
