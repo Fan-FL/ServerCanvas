@@ -9,6 +9,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
@@ -84,6 +86,7 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 	private JCheckBox bold, italic;
 
 	private JComboBox stytles;
+	private String my_ip;
 
 	Toolkit tool = getToolkit();
 	Dimension dim = tool.getScreenSize();// Get the size of current screen
@@ -213,10 +216,15 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 		// Initialization for the start bar
 		startbar = new JLabel("White Board");
 		startbar.setBackground(new Color(245,245,245));
+		try {
+			my_ip = InetAddress.getLocalHost().getHostAddress();
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
 
         userTable = new UserTable(this);
         JPanel kickButton = userTable.kick();
-        JLabel my_info = new JLabel("  You are: Admin"); 
+        JLabel my_info = new JLabel("      You are: Admin" +"(" + my_ip + ")"); 
         my_info.setForeground(Color.black);
         JPanel userinfo = new JPanel();
         userinfo.setLayout(new BorderLayout());
