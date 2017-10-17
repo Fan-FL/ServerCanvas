@@ -229,7 +229,7 @@ public class WhiteBoardWindow extends JFrame implements ActionListener {
 		StartServerWindow startServerWindow = new StartServerWindow();
         userTable = new UserTable(this);
         JPanel kickButton = userTable.kick();
-        JLabel my_info = new JLabel("      You are: Admin" +"(" + startServerWindow.my_ip + ")"); 
+        JLabel my_info = new JLabel("      You are: Admin" +" (" + startServerWindow.my_ip + ")"); 
         my_info.setForeground(Color.black);
         JPanel userinfo = new JPanel();
         userinfo.setLayout(new BorderLayout());
